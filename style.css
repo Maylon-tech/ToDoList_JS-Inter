@@ -60,6 +60,10 @@ body {
     opacity: 1;
 }
 
+.wrapper-list ul.list .check.checou {
+    color: green;
+    border-radius: 50%;
+}
 
 .wrapper-list ul.list .check {
     background-color: #404a6e;
