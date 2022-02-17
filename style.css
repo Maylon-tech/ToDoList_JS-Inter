@@ -110,3 +110,41 @@ body {
     font-size: 1.2em;
     color: white;
 }
+
+
+
+
+
+
+
+.social-btn {
+    margin: 150px auto;
+    width: 80%;
+    padding: 30px;
+    background-color: #404a6e;
+    border-radius: 17px 0px 17px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.social-btn .btn-box {
+    text-align: center;
+    width: 80%;
+    border-radius: 90px;
+    padding: 10px;background-color: #262e4c;
+    color: white;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    border-bottom: 2px solid white;
+}
+
+.social-btn.erro {
+    border: 2px solid red;
+}
+
+
+.social-btn .btn-box:hover {
+    background-color: #b1b2c9;
+    color: #171d37;
+}

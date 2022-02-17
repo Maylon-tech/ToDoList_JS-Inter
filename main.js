@@ -10,14 +10,19 @@ const Main = {
 
     cacheSelectors: function() { /*Responsáveis por criar as variáveis*/
        this.checkButtons = document.querySelectorAll('.check')
+       this.botaoBox = document.querySelector('.btn-box')
+       this.borderSocial = document.querySelector('.social-btn')
     },
 
     bindEvents: function() {
         const self = this
         this.checkButtons.forEach(function(button){
             button.onclick = self.Events.checkButton_click
-            
         })
+
+        this.botaoBox.onclick = function(btn) {
+            btn.botaoBox.classList.add('erro')
+        }
     },
 
 
@@ -42,8 +47,9 @@ const Main = {
             li.classList.add('done')
             
             */
-
         }
+
+        
     }
 }
 
