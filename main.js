@@ -9,20 +9,23 @@ const Main = {
 
 
     cacheSelectors: function() { /*Responsáveis por criar as variáveis*/
-       this.checkButtons = document.querySelectorAll('.check')
-       this.botaoBox = document.querySelector('.btn-box')
-       this.borderSocial = document.querySelector('.social-btn')
+       this.$checkButtons = document.querySelectorAll('.check')
+       this.$inputTask = document.querySelector('#inputTask')
+       this.$list = document.querySelector('#list')
+    
+ 
     },
 
     bindEvents: function() {
         const self = this
-        this.checkButtons.forEach(function(button){
+        this.$checkButtons.forEach(function(button){
             button.onclick = self.Events.checkButton_click
         })
 
-        this.botaoBox.onclick = function(btn) {
-            btn.botaoBox.classList.add('erro')
-        }
+        this.$inputTask.onkeypress = self.Events.inputTask_keypress.bind(this)
+        /*--> tem como objetivo levar o this(Main) para o keypress.*/
+
+    
     },
 
 
@@ -35,18 +38,42 @@ const Main = {
             if(isDone) {
                 li.classList.remove('done')
             } else {
+
                 li.classList.add('done')
             }
-            
+                        
             /*  BOA PRÁTICA DE JS-SENTENÇA LÓGICA
 
-            if(isDone) {
+            if(!isDone) {
                 return li.classList.remove('done')
             }  
 
             li.classList.add('done')
             
             */
+        },
+
+        /*O THIS dentro de um elemento sempre será o próprio ELEMENTO.*/
+
+        inputTask_keypress: function(e) {
+            const key = e.key
+            const value = e.target.value
+
+            if(key === 'Enter') {
+                this.$list.innerHTML += `
+                    <li>
+
+                        <div class="check"></div>
+                            <label class="task">
+                                ${value}
+                            </label>
+
+                        <button class="remove"></button>
+
+                    </li>
+                `
+                e.target.value = ''
+            }
         }
 
         

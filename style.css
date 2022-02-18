@@ -61,7 +61,9 @@ body {
 }
 
 
+
 .wrapper-list ul.list .check {
+    position: relative;
     background-color: #404a6e;
     border-radius: 50%;
     width: 20px;
@@ -70,8 +72,25 @@ body {
     cursor: pointer;
     transition: background-color 200ms ease;
 }
-.wrapper-list ul.list .check:hover {
+.wrapper-list ul.list .check:hover,
+.wrapper-list ul.list .done .check {
     background-color: #171d37;
+}
+
+.wrapper-list ul.list .done .check:after {
+    top: 5px;
+    left: 5px;
+    display: block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: green;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.wrapper-list ul.list .done .task {
+    text-decoration: line-through;
 }
 
 
@@ -112,39 +131,3 @@ body {
 }
 
 
-
-
-
-
-
-.social-btn {
-    margin: 150px auto;
-    width: 80%;
-    padding: 30px;
-    background-color: #404a6e;
-    border-radius: 17px 0px 17px 0px;
-    display: flex;
-    justify-content: center;
-}
-
-.social-btn .btn-box {
-    text-align: center;
-    width: 80%;
-    border-radius: 90px;
-    padding: 10px;background-color: #262e4c;
-    color: white;
-    font-size: 20px;
-    letter-spacing: 2px;
-    font-weight: 700;
-    border-bottom: 2px solid white;
-}
-
-.social-btn.erro {
-    border: 2px solid red;
-}
-
-
-.social-btn .btn-box:hover {
-    background-color: #b1b2c9;
-    color: #171d37;
-}
