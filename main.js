@@ -1,19 +1,17 @@
 
 const Main = {
-    /*THIS --> informa que o cacheSelectors está dentro do main.. - que está no pai..)com contextos diferentes no JS(*/
+    /*THIS --> informa que o cacheSelectors está dentro do main.. 
+    - que está no pai..com contextos diferentes no JS*/
     init: function() {
         this.cacheSelectors()
         this.bindEvents()
     },
 
-
-
     cacheSelectors: function() { /*Responsáveis por criar as variáveis*/
        this.$checkButtons = document.querySelectorAll('.check')
        this.$inputTask = document.querySelector('#inputTask')
        this.$list = document.querySelector('#list')
-    
- 
+       this.$removerBTN = document.querySelectorAll('.remove')     
     },
 
     bindEvents: function() {
@@ -25,9 +23,10 @@ const Main = {
         this.$inputTask.onkeypress = self.Events.inputTask_keypress.bind(this)
         /*--> tem como objetivo levar o this(Main) para o keypress.*/
 
-    
+        this.$removerBTN.forEach(function(button) {
+            button.onclick = self.Events.removeBtn_click
+        })    
     },
-
 
     /*Funções relacionadas a Eventos*/
     Events: {
@@ -43,14 +42,19 @@ const Main = {
             }
                         
             /*  BOA PRÁTICA DE JS-SENTENÇA LÓGICA
-
             if(!isDone) {
                 return li.classList.remove('done')
             }  
+            li.classList.add('done')*/
+        },
 
-            li.classList.add('done')
-            
-            */
+        removeBtn_click: function(e) {
+            let li = e.target.parentElement
+            li.classList.add('removed')
+
+            setTimeout(function() {
+                li.classList.add('hidden')
+            }, 300)
         },
 
         /*O THIS dentro de um elemento sempre será o próprio ELEMENTO.*/
@@ -72,11 +76,12 @@ const Main = {
 
                     </li>
                 `
-                e.target.value = ''
-            }
-        }
+                e.target.value = '' /* Limpa o espaço após digitar no campo*/
 
-        
+                this.cacheSelectors()
+                this.bindEvents()
+            }
+        }        
     }
 }
 

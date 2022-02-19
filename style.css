@@ -53,6 +53,15 @@ body {
     position: relative;
     transition: backgroud-color 600ms ease;
 }
+
+.wrapper-list ul.list li.removed {
+    animation: collapseItem 300ms ease;
+}
+.wrapper-list ul.list li.hidden {
+    display: none;
+}
+
+
 .wrapper-list ul.list li:hover {
     background-color: #323b5c;
 }
@@ -131,3 +140,13 @@ body {
 }
 
 
+
+
+@keyframes collapseItem {
+    0% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(-90deg);
+    }
+}
